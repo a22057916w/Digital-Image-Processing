@@ -1,4 +1,8 @@
 % change size of z to view the differences of high pass filter
+% ======== new =========
+[xLena, map]=imread('lena.bmp');
+xLenaf=fftshift(fft2(xLena));
+% ======================
 fig = figure();
 fig.Position(3:4) = [1000, 1500];
 subplot(3,2,1)
@@ -27,5 +31,7 @@ subplot(3,2,5)
 image(abs(yLena));
 colormap(map), axis('square')
 
-% If z goes larger, more frequency(originated from low frequency) gets filter out, the resulting image become less sharp (less edge detail).
-% If z goes smaller, less frequency(originalted from low frequency) gets filter out, the resulting image become more sharp. (However, may contain more detail with other feature)
+% If z goes larger, more frequency gets filtered out, the resulting image become sharper (more edge detail).
+% However, if z goes too large, the high frequency would also be filter out, resulting a dark image.
+
+% If z goes smaller, less frequency gets filtered out, the resulting image become less sharp. 
